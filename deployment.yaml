@@ -20,7 +20,7 @@ spec:
         image: linuxserver/code-server
         env:
         - name: "PASSWORD"
-          value: "plucky-pink-acne-hang-eyelash-trunk"
+          value: "$password"
         volumeMounts:
         - mountPath: "/config"
           name: codeservervolume
