@@ -5,7 +5,7 @@ metadata:
 spec:
   tls: {certResolver: le}
   routes:
-  - match: Host(`code.rin.digital`)
+  - match: Host(`$domain`)
     kind: Rule
     services:
     - name: codeserver
