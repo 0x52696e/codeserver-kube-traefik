@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codeserver
+  namespace: rin-codeserver
+  labels:
+    app: codeserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codeserver
+  template:
+    metadata:
+      labels:
+        app: codeserver
+    spec:
+      containers:
+      - name: codeserver
+        image: linuxserver/code-server
+        env:
+        - name: "PASSWORD"
+          value: "plucky-pink-acne-hang-eyelash-trunk"
+        volumeMounts:
+        - mountPath: "/config"
+          name: codeservervolume
+      volumes:
+      - name: codeservervolume
+        persistentVolumeClaim:
+          claimName: codeserverpvc

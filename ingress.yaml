@@ -1,0 +1,12 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: codeserver
+spec:
+  tls: {certResolver: le}
+  routes:
+  - match: Host(`code.rin.digital`)
+    kind: Rule
+    services:
+    - name: codeserver
+      port: 80
